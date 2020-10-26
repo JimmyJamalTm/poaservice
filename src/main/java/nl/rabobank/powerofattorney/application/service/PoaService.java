@@ -1,4 +1,7 @@
 package nl.rabobank.powerofattorney.application.service;
 
-public class PoaService {
+@RepositoryRestResource
+@CrossOrigin(origins = "http://localhost:4200")
+public interface PoaService extends JpaRepository<Record, Long> {
 }
+
