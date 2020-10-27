@@ -17,6 +17,10 @@
 		{
 			"id": "3333",
 			"type" : "CREDIT_CARD"
+		},
+		{
+			"id": "5555",
+			"type" : "DEBIT_CARD"
 		}
 	]
 }

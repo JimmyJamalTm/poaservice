@@ -22,6 +22,15 @@ public class Poa {
     private String direction;
     // TODO enum?
     private  ArrayList<String> authorizations;
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    public void setCards(ArrayList<Card> cards) {
+        this.cards = cards;
+    }
+
     private  ArrayList<Card> cards;
 
 

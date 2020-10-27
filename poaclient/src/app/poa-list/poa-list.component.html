@@ -21,12 +21,13 @@
   <mat-card>
     <br>
     <mat-card-content>
-      <h3>Power of Atterney Id's</h3>
+      <h3>Power of Atterney</h3>
       <mat-list>
           <mat-list-item >Id:{{powerOfAttorney.id}} </mat-list-item>
           <mat-list-item >Grantor:{{powerOfAttorney.grantor}} </mat-list-item>
           <mat-list-item >Grantee:{{powerOfAttorney.grantee}} </mat-list-item>
-          <button mat-list-item (click)="showAccount(powerOfAttorney.account)" >Account:{{powerOfAttorney.account}} </button>
+          <mat-list-item *ngIf="!powerOfAttorney.account">Account: No active account </mat-list-item>
+          <button *ngIf="powerOfAttorney.account" mat-list-item (click)="showAccount(powerOfAttorney.account)" >Account:{{powerOfAttorney.account}} </button>
           <mat-list-item>Direction:{{powerOfAttorney.direction}} </mat-list-item>
           <mat-list-item >Authorizations:{{powerOfAttorney.authorizations}}</mat-list-item>
           <mat-list-item *ngIf="powerOfAttorney.cards">Cards</mat-list-item>
