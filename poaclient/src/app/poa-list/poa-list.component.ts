@@ -38,14 +38,12 @@ export class PoaListComponent implements OnInit {
   public retrievePoa(id: string){
     this.poaService.getPoa(id).subscribe(data => {
       this.powerOfAttorney = data;
-      console.log(this.powerOfAttorney)
     });
   }
 
   public retrieveAccount(id: string){
     this.poaService.getAccount(id).subscribe(data => {
       this.account = data;
-      console.log(this.account)
     });
   }
 
@@ -59,7 +57,6 @@ export class PoaListComponent implements OnInit {
   public retrieveCreditCard(id: string){
     this.poaService.getCreditcard(id).subscribe(data => {
       this.creditCard = data;
-      console.log(this.creditCard)
     });
   }
 
@@ -102,9 +99,5 @@ export class PoaListComponent implements OnInit {
     this.showDebitDetails = false;
     this.showAccountDetails = false;
   }
-
-  // public retrievePoas() : Array<Poa> {
-  //   this.powerOfAttorneys = this.poaService.getAllPoas();
-  // }
 
 }

@@ -55,7 +55,7 @@
                 oauth2.errCb({
                     authId: oauth2.auth.name,
                     source: "auth",
-                    level: "error",
+                    level: "templates.error",
                     message: oauthErrorMsg || "[Authorization failed]: no accessCode received from the server"
                 });
             }
