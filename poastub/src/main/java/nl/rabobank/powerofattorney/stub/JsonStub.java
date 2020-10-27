@@ -59,7 +59,7 @@ public class JsonStub
                 .willReturn(
                         aResponse()
                             .withBodyFile("accounts/{{request.path.[1]}}.json")
-                            .withFixedDelay(500)
+//                            .withFixedDelay(500)
                             .withHeader(CONTENT_TYPE_HEADER, CONTENT_TYPE_JSON)));
 
         // Get debit card details

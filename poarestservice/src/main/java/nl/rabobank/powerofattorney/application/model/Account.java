@@ -1,19 +1,19 @@
 package nl.rabobank.powerofattorney.application.model;
 
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
 @Getter
 @NoArgsConstructor
-public class Card {
-    // TODO vertaalslag id naar Long
-    @Id
-    private String id;
-    // TODO enum
-    private String type;
+@Entity
+public class Account {
+     @Id
+     private String id;
+     private String owner;
+     private Long balance;
+     private String created;
+     private String ended;
 }

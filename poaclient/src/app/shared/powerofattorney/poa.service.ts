@@ -4,31 +4,33 @@ import { Observable } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class PoaService {
-  public API = '//localhost:8081';
+  public API = '//localhost:8088';
   public POA_API = this.API + '/power-of-attorneys';
+  public DEBIT_CARD_API = this.API + '/debit-cards/'
+  public CREDIT_CARD_API = this.API + '/credit-cards/'
+  public ACCOUNT_API = this.API + '/accounts/'
 
   constructor(private http: HttpClient) {
   }
 
   getAllPoas(): Observable<any> {
-    return this.http.get(this.API );
+    return this.http.get(this.POA_API);
   }
 
-  get(id: string) {
+  getPoa(id: string) : any {
     return this.http.get(this.POA_API + '/' + id);
   }
 
-  save(poa: any): Observable<any> {
-    let result: Observable<any>;
-    if (poa.href) {
-      result = this.http.put(poa.href, poa);
-    } else {
-      result = this.http.post(this.POA_API, poa);
-    }
-    return result;
+  getDebitcard(id: string): any  {
+    return this.http.get(this.DEBIT_CARD_API + id);
   }
 
-  remove(href: string) {
-    return this.http.delete(href);
+  getCreditcard(id: string): any  {
+    return this.http.get(this.CREDIT_CARD_API + id);
   }
+
+  getAccount(id: string): any {
+    return this.http.get(this.ACCOUNT_API + id.substring(8));
+  }
+
 }

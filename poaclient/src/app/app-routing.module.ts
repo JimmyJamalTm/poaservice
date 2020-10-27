@@ -3,9 +3,9 @@ import {RouterModule, Routes} from '@angular/router';
 import {PoaListComponent} from './poa-list/poa-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/record-list', pathMatch: 'full' },
+  { path: '', redirectTo: '/poa-list', pathMatch: 'full' },
   {
-    path: 'record-list',
+    path: 'poa-list',
     component: PoaListComponent
   }
 ];

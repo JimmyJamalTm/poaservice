@@ -1,24 +1,28 @@
 package nl.rabobank.powerofattorney.application.model;
 
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.ArrayList;
 
 @Entity
-@Data
+@Getter
+@NoArgsConstructor
 public class Poa {
-    // TODO setters mogen niet
+    // TODO vertaalslag id naar Long
     @Id
-    private final long id;
-    private final String grantor;
-    private final String grantee;
-    private final String account;
+    private String id;
+    private String grantor;
+    private String grantee;
+    private String account;
     // TODO enum?
-    private final String direction;
+    private String direction;
     // TODO enum?
-    private final ArrayList<String> authorizations;
-    private final ArrayList<Card> cards;
+    private  ArrayList<String> authorizations;
+    private  ArrayList<Card> cards;
+
+
 }

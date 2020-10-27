@@ -1,3 +1,115 @@
-<mat-card>
-<!--  TODO: hier komt de output na inloggen-->
-</mat-card>
+<div *ngIf="showPowerOfAttorneys">
+  <mat-card>
+  <!--  TODO: hier komt de output na inloggen-->
+    <div> Total size = {{powerOfAttorneys.length}}</div>
+    <br>
+    <mat-card-content>
+      <h4>Power of Atterney Id's</h4>
+      <mat-list>
+        <mat-list-item *ngFor="let poa of powerOfAttorneys">
+          <h6 mat-line>
+            <button mat-list-item (click)="showPoaDetails(poa.id)"> Id:{{poa.id}} </button>
+          </h6>
+          <mat-divider [inset]="true" ></mat-divider>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div *ngIf="showPowerOfAttorneyDetails && powerOfAttorney">
+  <mat-card>
+    <br>
+    <mat-card-content>
+      <h3>Power of Atterney Id's</h3>
+      <mat-list>
+          <mat-list-item >Id:{{powerOfAttorney.id}} </mat-list-item>
+          <mat-list-item >Grantor:{{powerOfAttorney.grantor}} </mat-list-item>
+          <mat-list-item >Grantee:{{powerOfAttorney.grantee}} </mat-list-item>
+          <button mat-list-item (click)="showAccount(powerOfAttorney.account)" >Account:{{powerOfAttorney.account}} </button>
+          <mat-list-item>Direction:{{powerOfAttorney.direction}} </mat-list-item>
+          <mat-list-item >Authorizations:{{powerOfAttorney.authorizations}}</mat-list-item>
+          <mat-list-item *ngIf="powerOfAttorney.cards">Cards</mat-list-item>
+          <mat-list-item *ngFor="let card of powerOfAttorney.cards">
+            <button mat-list-item (click)="showCardDetails(card)">id:{{card.id}}</button>
+            <mat-list-item >type:{{card.type}}</mat-list-item>
+            <mat-divider [inset]="true" ></mat-divider>
+          </mat-list-item>
+          <mat-divider [inset]="true" ></mat-divider>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+  <br>
+  <button mat-fab color="primary" (click)="resetApp()">Back</button>
+</div>
+
+<div *ngIf="showAccountDetails && account">
+  <mat-card>
+    <br>
+    <mat-card-content>
+      <h3>Account info</h3>
+      <mat-list>
+        <mat-list-item >Id:{{account.id}} </mat-list-item>
+        <mat-list-item >owner:{{account.owner}} </mat-list-item>
+        <mat-list-item >balance:{{account.balance}} </mat-list-item>
+        <mat-list-item>created:{{account.created}} </mat-list-item>
+        <mat-list-item *ngIf="account.ended" >ended:{{account.ended}}</mat-list-item>
+        <mat-divider [inset]="true" ></mat-divider>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+  <br>
+  <button mat-fab color="primary" (click)="resetApp()">Back</button>
+</div>
+
+<div *ngIf="showDebitDetails && debitCard">
+  <mat-card>
+    <br>
+    <mat-card-content>
+      <h3>Debitcard info</h3>
+      <mat-list>
+        <mat-list-item >Id:{{debitCard.id}} </mat-list-item>
+        <mat-list-item >status:{{debitCard.status}} </mat-list-item>
+        <mat-list-item >cardnumber:{{debitCard.cardNumber}} </mat-list-item>
+        <mat-list-item>sequencenumber:{{debitCard.sequenceNumber}} </mat-list-item>
+        <mat-list-item >cardholder:{{debitCard.cardHolder}}</mat-list-item>
+        <mat-list-item> Atm Limit</mat-list-item>
+        <mat-list-item>
+          <mat-list-item> Limit:{{debitCard.atmLimit.limit}}</mat-list-item>
+          <mat-list-item> Period Unit:{{debitCard.atmLimit.periodUnit}}</mat-list-item>
+          <mat-divider [inset]="true" ></mat-divider>
+        </mat-list-item>
+        <mat-list-item >Pos Limit</mat-list-item>
+        <mat-list-item>
+          <mat-list-item> Limit:{{debitCard.posLimit.limit}}</mat-list-item>
+          <mat-list-item> Period Unit:{{debitCard.posLimit.periodUnit}}</mat-list-item>
+          <mat-divider [inset]="true" ></mat-divider>
+        </mat-list-item>
+        <mat-list-item >contactless:{{debitCard.contactless}}</mat-list-item>
+        <mat-divider [inset]="true" ></mat-divider>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+  <br>
+  <button mat-fab color="primary" (click)="resetApp()">Back</button>
+</div>
+
+<div *ngIf="showCCDetails && creditCard">
+  <mat-card>
+    <br>
+    <mat-card-content>
+      <h3>Creditcard info</h3>
+      <mat-list>
+        <mat-list-item >Id:{{creditCard.id}} </mat-list-item>
+        <mat-list-item >status:{{creditCard.status}} </mat-list-item>
+        <mat-list-item >cardnumber:{{creditCard.cardNumber}} </mat-list-item>
+        <mat-list-item>sequencenumber:{{creditCard.sequenceNumber}} </mat-list-item>
+        <mat-list-item >cardholder:{{creditCard.cardHolder}}</mat-list-item>
+        <mat-list-item >monthly limit:{{creditCard.monthlyLimit}}</mat-list-item>
+        <mat-divider [inset]="true" ></mat-divider>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+  <br>
+  <button mat-fab color="primary" (click)="resetApp()">Back</button>
+</div>
