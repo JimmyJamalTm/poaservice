@@ -20,7 +20,7 @@ public class DebitcardService {
     RestTemplate restTemplate;
 
     public Debitcard retrieveDebitcard(String cardId) throws Exception {
-        final String uri = "http://localhost:8080//debit-cards/" + cardId;
+        final String uri = "http://localhost:8080/debit-cards/" + cardId;
 //        log.info("Attempting to retrieve debitcard with id: " + cardId);
         String result = restTemplate.getForObject(uri, String.class);
         Debitcard debitcard = objectMapper.readValue(result, Debitcard.class);
