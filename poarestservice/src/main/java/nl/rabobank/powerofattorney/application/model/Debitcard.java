@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -27,5 +28,9 @@ public class Debitcard {
     @OneToOne
     private PosLimit posLimit;
     private Boolean contactless;
+
+    public boolean isActive() {
+        return Objects.equals(status, "ACTIVE");
+    }
 
 }

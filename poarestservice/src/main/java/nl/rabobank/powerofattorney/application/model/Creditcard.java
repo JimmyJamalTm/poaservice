@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -17,4 +18,8 @@ public class Creditcard {
     private Long sequenceNumber;
     private String cardHolder;
     private Long  monthlyLimit;
+
+    public boolean isActive() {
+        return Objects.equals(status, "ACTIVE");
+    }
 }

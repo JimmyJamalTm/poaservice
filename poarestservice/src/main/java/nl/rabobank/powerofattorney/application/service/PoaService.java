@@ -12,6 +12,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -60,58 +62,52 @@ public class PoaService {
         return poa;
     }
 
-    private Poa checkCards(Poa poa) {
-        ArrayList<Card> activeCards = new ArrayList<>();
+    private Poa checkCards(final Poa poa) {
+        final var activeCards = poa.getCards().stream()
+                .filter(card -> {
+                    if (card.isDebitCard()) {
+                        return debitcardCheck(card)
+                                .map(Debitcard::isActive)
+                                .orElse(false);
+                    }
 
-        poa.getCards().stream()
-                .forEach(card -> {
-                            if (checkActiveCard(card)) {
-                                activeCards.add(card);
-                            }
-                        }
-                );
+                    return creditcardCheck(card)
+                            .map(Creditcard::isActive)
+                            .orElse(false);
+                })
+                .collect(Collectors
+                        .toCollection(ArrayList::new));
         poa.setCards(activeCards);
+
         return poa;
     }
 
-    private boolean checkActiveCard(Card card) {
-        if(card.getType().equals("DEBIT_CARD")){
-            if (debitcardCheck(card)) {
-                return true;
-            }
-        }
-        if(card.getType().equals("CREDIT_CARD")){
-            if (creditcardCheck(card)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean debitcardCheck(Card card) {
+    private Optional<Debitcard> debitcardCheck(Card card) {
+        Debitcard debitcard = null;
         try {
-            Debitcard debitcard = debitcardService.retrieveDebitcard(card.getId());
+            debitcard = debitcardService.retrieveDebitcard(card.getId());
             if (debitcard.getStatus().equals("ACTIVE")) {
-                return true;
+                return Optional.of(debitcard);
             }
         } catch (Exception e) {
             log.error("not able to retrieve debit card information");
             throw new RuntimeException(e);
         }
-        return false;
+        return Optional.ofNullable(debitcard);
     }
 
-    private boolean creditcardCheck(Card card) {
+    private Optional<Creditcard> creditcardCheck(Card card) {
+        Creditcard creditcard = null;
         try {
-            Creditcard creditcard = creditcardService.retrieveCreditcard(card.getId());
+            creditcard = creditcardService.retrieveCreditcard(card.getId());
             if(creditcard.getStatus().equals("ACTIVE")){
-                return true;
+                return Optional.of(creditcard);
             }
         } catch (Exception e) {
             log.error("not able to retrieve credit card information");
             throw new RuntimeException(e);
         }
-        return false;
+       return Optional.ofNullable(creditcard);
     }
 }
 

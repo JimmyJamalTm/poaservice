@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -28,7 +29,7 @@ public class Poa {
         this.cards = cards;
     }
 
-    private  ArrayList<Card> cards;
+    private ArrayList<Card> cards;
 
 
 }
