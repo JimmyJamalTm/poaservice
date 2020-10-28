@@ -33,7 +33,6 @@ public class ApplicationConfiguration implements WebMvcConfigurer {
         return customRestTemplate;
     }
 
-
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(new MappingJackson2HttpMessageConverter(jsonMapper()));
