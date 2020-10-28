@@ -1,8 +1,8 @@
 package nl.rabobank.powerofattorney.application.service;
 
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import nl.rabobank.powerofattorney.application.model.Creditcard;
 import nl.rabobank.powerofattorney.application.model.Poa;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,8 +18,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
-
-import com.fasterxml.jackson.core.type.TypeReference;
 
 @ExtendWith(MockitoExtension.class)
 public class PoaServiceTest {

@@ -1,7 +1,6 @@
 package nl.rabobank.powerofattorney.application.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import nl.rabobank.powerofattorney.application.model.Creditcard;
 import nl.rabobank.powerofattorney.application.model.Debitcard;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
