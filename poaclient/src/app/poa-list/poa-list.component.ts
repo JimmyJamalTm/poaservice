@@ -102,6 +102,11 @@ export class PoaListComponent implements OnInit {
       this.showCCDetails = false;
       this.showDebitDetails = false;
       this.showAccountDetails = false;
+    } else if (!this.showPowerOfAttorneyDetails) {
+      this.showPowerOfAttorneyDetails = true;
+      this.showCCDetails = false;
+      this.showDebitDetails = false;
+      this.showAccountDetails = false;
     } else {
       this.logOut();
     }

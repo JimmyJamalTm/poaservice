@@ -20,7 +20,6 @@ import org.springframework.web.filter.CorsFilter;
 import java.util.Collections;
 import java.util.stream.Stream;
 
-//@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 @SpringBootApplication
 public class SpringBootPoaApplication {
 
