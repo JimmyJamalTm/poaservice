@@ -15,7 +15,7 @@ public class CreditcardService {
 
     public Creditcard retrieveCreditcard(String cardId) throws Exception {
         final String uri = "http://localhost:8080/credit-cards/" + cardId;
-        log.info("Attempting to retrieve creditcard with id: " + cardId);
+//        log.info("Attempting to retrieve creditcard with id: " + cardId);
         String result = Util.getJsonMessage(uri);
         objectMapper.addHandler(deserializationProblemHandler);
         Creditcard creditcard = objectMapper.readValue(result, Creditcard.class);

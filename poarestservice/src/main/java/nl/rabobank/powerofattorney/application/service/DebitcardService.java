@@ -15,7 +15,7 @@ public class DebitcardService {
 
     public Debitcard retrieveDebitcard(String cardId) throws Exception {
         final String uri = "http://localhost:8080//debit-cards/" + cardId;
-        log.info("Attempting to retrieve debitcard with id: " + cardId);
+//        log.info("Attempting to retrieve debitcard with id: " + cardId);
         String result = Util.getJsonMessage(uri);
         objectMapper.addHandler(deserializationProblemHandler);
         Debitcard debitcard = objectMapper.readValue(result, Debitcard.class);

@@ -48,7 +48,9 @@ public class PoaService {
            poa.setAccount(null);
        }
 
-       checkCards(poa);
+       if (poa.getCards() != null) {
+           checkCards(poa);
+       }
 
        return poa;
 
