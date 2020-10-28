@@ -5,6 +5,8 @@ import {Account} from "../model/account.model";
 import {Debitcard} from "../model/debitcard.model";
 import {Creditcard} from "../model/creditcard.model";
 import {Card} from "../model/card.model";
+import {AuthenticationService} from "../shared/authentication/authentication.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-poa-list',
@@ -25,14 +27,18 @@ export class PoaListComponent implements OnInit {
   showDebitDetails: boolean = false;
   showAccountDetails: boolean = false;
 
-
-  constructor(private poaService: PoaService) { }
+  constructor(private poaService: PoaService, private loginservice: AuthenticationService, private router: Router,) { }
 
   ngOnInit() {
-    this.poaService.getAllPoas().subscribe(data => {
-      this.powerOfAttorneys = data;
-      console.log(this.powerOfAttorneys)
-    });
+    // TODO: idealiter los je dit in de backend op.
+    if(this.loginservice.getLoggedInUserName() === 'admin') {
+      this.poaService.getAllPoas().subscribe(data => {
+        this.powerOfAttorneys = data;
+        console.log(this.powerOfAttorneys)
+      });
+    } else {
+      this.showPoaDetails(this.loginservice.getLoggedInUserName());
+    }
   }
 
   public retrievePoa(id: string){
@@ -93,11 +99,20 @@ export class PoaListComponent implements OnInit {
   }
 
   public resetApp() {
-    this.showPowerOfAttorneys = true;
-    this.showPowerOfAttorneyDetails = false;
-    this.showCCDetails = false;
-    this.showDebitDetails = false;
-    this.showAccountDetails = false;
+    if (this.loginservice.getLoggedInUserName() === 'admin') {
+      this.showPowerOfAttorneys = true;
+      this.showPowerOfAttorneyDetails = false;
+      this.showCCDetails = false;
+      this.showDebitDetails = false;
+      this.showAccountDetails = false;
+    } else {
+      this.logOut();
+    }
+  }
+
+  public logOut() {
+    this.loginservice.logout();
+    this.router.navigate(['']);
   }
 
 }
