@@ -14,7 +14,6 @@ import {Router} from "@angular/router";
   styleUrls: ['./poa-list.component.css']
 })
 export class PoaListComponent implements OnInit {
-  // TODO 1 lijst met alle records, extra veld : datatype
   powerOfAttorneys: Array<Poa>;
   powerOfAttorney: Poa;
   account: Account;
@@ -34,7 +33,6 @@ export class PoaListComponent implements OnInit {
     if(this.loginservice.getLoggedInUserName() === 'admin') {
       this.poaService.getAllPoas().subscribe(data => {
         this.powerOfAttorneys = data;
-        console.log(this.powerOfAttorneys)
       });
     } else {
       this.showPoaDetails(this.loginservice.getLoggedInUserName());
@@ -56,7 +54,6 @@ export class PoaListComponent implements OnInit {
   public retrieveDebitCard(id: string){
     this.poaService.getDebitcard(id).subscribe(data => {
       this.debitCard = data;
-      console.log(this.debitCard)
     });
   }
 

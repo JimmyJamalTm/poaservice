@@ -12,15 +12,12 @@ import java.util.ArrayList;
 @Getter
 @NoArgsConstructor
 public class Poa {
-    // TODO vertaalslag id naar Long
     @Id
     private String id;
     private String grantor;
     private String grantee;
     private String account;
-    // TODO enum?
     private String direction;
-    // TODO enum?
     private  ArrayList<String> authorizations;
 
     public void setAccount(String account) {

@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
       this.invalidLogin = false;
       this.loginSuccess = true;
       this.successMessage = 'Login Successful.';
-      console.log('ff checks' + result);
       this.router.navigate(['poa-list']);
     }, () => {
       this.invalidLogin = true;

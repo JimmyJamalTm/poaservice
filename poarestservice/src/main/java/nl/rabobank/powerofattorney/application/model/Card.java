@@ -11,9 +11,7 @@ import javax.persistence.Id;
 @Getter
 @NoArgsConstructor
 public class Card {
-    // TODO vertaalslag id naar Long
     @Id
     private String id;
-    // TODO enum
     private String type;
 }
