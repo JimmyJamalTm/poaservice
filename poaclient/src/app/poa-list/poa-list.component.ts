@@ -96,7 +96,7 @@ export class PoaListComponent implements OnInit {
   }
 
   public resetApp() {
-    if (this.loginservice.getLoggedInUserName() === 'admin') {
+    if (this.loginservice.getLoggedInUserName() === 'admin' && this.showPowerOfAttorneyDetails) {
       this.showPowerOfAttorneys = true;
       this.showPowerOfAttorneyDetails = false;
       this.showCCDetails = false;
