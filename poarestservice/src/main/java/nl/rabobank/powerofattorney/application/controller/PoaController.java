@@ -6,6 +6,7 @@ import nl.rabobank.powerofattorney.application.config.AuthenticationBean;
 import nl.rabobank.powerofattorney.application.model.Poa;
 import nl.rabobank.powerofattorney.application.repository.PoaRepository;
 import nl.rabobank.powerofattorney.application.service.PoaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,13 +17,12 @@ import java.util.List;
 @Slf4j
 @RestController
 public class PoaController {
-    private PoaRepository repository;
 
-    public PoaController(PoaRepository repository) {
-        this.repository = repository;
+    public PoaController() {
     }
 
-    private final PoaService poaService = new PoaService();
+    @Autowired
+    private PoaService poaService;
 
     @GetMapping("/power-of-attorneys")
     @CrossOrigin(origins = "http://localhost:4200")
@@ -40,5 +40,4 @@ public class PoaController {
     public AuthenticationBean basicauth() {
         return new AuthenticationBean("You are authenticated");
     }
-
 }

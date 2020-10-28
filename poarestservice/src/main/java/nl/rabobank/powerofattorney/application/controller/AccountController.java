@@ -7,6 +7,7 @@ import nl.rabobank.powerofattorney.application.repository.AccountRepository;
 import nl.rabobank.powerofattorney.application.repository.PoaRepository;
 import nl.rabobank.powerofattorney.application.service.AccountService;
 import nl.rabobank.powerofattorney.application.service.PoaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,21 +17,17 @@ import java.util.List;
 
 @RestController
 public class AccountController {
-    private AccountRepository repository;
 
-    public AccountController(AccountRepository repository) {
-        this.repository = repository;
+    public AccountController() {
+
     }
 
-    private final AccountService accountService = new AccountService();
+    @Autowired
+    private  AccountService accountService;
 
     @GetMapping("/accounts/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
     public Account retrieveAccount(@PathVariable("id") String id) throws Exception {
         return accountService.retrieveAccount(id);
     }
-
-
-
-
 }

@@ -14,8 +14,8 @@
     </properties>
 
     <modules>
-        <module>power-of-attorney-rest-service</module>
-        <module>power-of-attorney-json-stub</module>
+        <module>poarestservice</module>
+        <module>poastub</module>
     </modules>
 
 </project>

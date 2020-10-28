@@ -20,9 +20,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserService userDetailsService;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -34,12 +31,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().
-                disable()
                 .authorizeRequests()
                 .antMatchers("/").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers("/power-of-attorneys").hasAuthority("ADMIN")
